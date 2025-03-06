@@ -63,7 +63,7 @@ songplay_table_create = ("""
                          song_id character varying(30) NOT NULL, 
                          artist_id character varying(30) NOT NULL, 
                          session_id double precision NOT NULL, 
-                         location character varying(MAX) NOT NULL,  
+                         location character varying(MAX),  
                          user_agent character varying(MAX) NOT NULL,
                          PRIMARY KEY(songplay_id)
                          )        
@@ -93,7 +93,7 @@ artist_table_create = ("""
 CREATE TABLE artists (
                        artist_id character varying(30) NOT NULL, 
                        name character varying(MAX) NOT NULL, 
-                       location character varying(MAX) NOT NULL, 
+                       location character varying(MAX), 
                        latitude double precision, 
                        longitude double precision
                      )
@@ -200,6 +200,7 @@ INSERT INTO artists (
                        longitude
                      )
                        SELECT 
+                       DISTINCT
                         artist_id, 
                         artist_name, 
                         artist_location, 

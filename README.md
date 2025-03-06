@@ -19,17 +19,17 @@ Once the data is loaded, it will be in a correct format and cleaned so that it i
 ## 3. Example queries and results for song play analysis
 Examples:
  - **Number of songs by month**
- SELECT t.month, COUNT(sp.start_time) AS num_songs
- FROM songplays sp INNER JOIN time t ON sp.start_time = t.start_time
- GROUP BY t.month
- ORDER BY num_songs DESC
+    `SELECT t.month, COUNT(sp.start_time) AS num_songs
+    FROM songplays sp INNER JOIN time t ON sp.start_time = t.start_time
+    GROUP BY t.month
+    ORDER BY num_songs DESC`
  - **Total number of unique users**
- SELECT COUNT(user_id) FROM users
+    `SELECT COUNT(user_id) FROM users`
 
 ### 4. How to run the scripts
 - Install the necessary libraries:
- - pip install configparser
- - pip install psycopg2
+    - **pip install configparser**
+    - **pip install psycopg2**
 - About the scripts/files:
     - create_tables.py = This is the file that will correctly create the tables for the database. It makes use of the queries located at sql_queries.py as well as credentials from dwh.cfg
     - sql_queries.py = This has all of the queries needed that will interact with the database and then exports them so they can be used from other files in the ETL. It also requires credentials from dwh.cfg 
